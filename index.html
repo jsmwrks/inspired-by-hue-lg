@@ -1,123 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inspired by Hue</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .font-['Pacifico'] {
-          font-family: 'Pacifico', cursive;
-        }
-    </style>
-</head>
-<body class="min-h-screen bg-gradient-to-br from-gray-900 via-sky-900 to-black text-white flex flex-col">
-    <header class="py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center bg-gradient-to-r from-sky-400 to-blue-400 text-transparent bg-clip-text font-['Pacifico']">
-            Inspired by Hue
-        </h1>
-        <p class="text-center text-gray-300 mt-2">
-            Ink Tracing Adventures
-        </p>
-    </header>
+import React, { useState, useEffect, useRef } from 'react';
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle, Mail, BookOpen, Brush, Palette } from 'lucide-react';
+import { cn } from "@/lib/utils"
 
-    <main class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        
-            
-                
-                    <div class="text-center">
-                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                            Unlock Your Creative Journey
-                        </h2>
-                        <p class="text-gray-300 mt-4">
-                            Embark on a colorful adventure with &quot;Inspired by Hue&quot;!
-                            Discover the art of ink tracing and receive a <span class="font-semibold text-sky-300">FREE</span> digital copy
-                            of my book by joining our community.
-                        </p>
-                    </div>
+// Placeholder image URL (replace with your actual book cover URL)
+const BOOK_COVER_URL = "https://placehold.co/400x500/EEE/31343C?text=Inspired+by+Hue&font=Montserrat";
 
-                    
-                        <div class="flex flex-col sm:flex-row items-center gap-6">
-                            <div class="w-full sm:w-1/2">
-                                <img
-                                    src="Cover.jpg"
-                                    alt="Inspired by Hue Book Cover"
-                                    class="rounded-lg shadow-lg border border-gray-700 w-full"
-                                />
-                            </div>
-                            <div class="w-full sm:w-1/2">
-                                <form  class="space-y-6">
+// Animation variants
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            delayChildren: 0.3,
+            staggerChildren: 0.2
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1
+    }
+};
+
+const LandingPage = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [isSubscribed, setIsSubscribed] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const emailInputRef = useRef<HTMLInputElement>(null);
+
+    // Focus on the email input when the page loads
+    useEffect(() => {
+        if (emailInputRef.current) {
+            emailInputRef.current.focus();
+        }
+    }, []);
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!name.trim() || !email.trim()) {
+            alert('Please enter your name and email.'); // Basic validation
+            return;
+        }
+
+        setIsLoading(true);
+
+        // Simulate a subscription process (replace with your actual backend logic)
+        try {
+            // Simulate an API call delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            // In a real application, you would send the data to a server here
+            console.log('Subscribed:', { name, email });
+            setIsSubscribed(true);
+        } catch (error) {
+            console.error('Subscription failed:', error);
+            alert('Failed to subscribe. Please try again later.'); // Basic error handling
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-sky-900 to-black text-white flex flex-col">
+            <header className="py-6 px-4 sm:px-6 lg:px-8">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center bg-gradient-to-r from-sky-400 to-blue-400 text-transparent bg-clip-text font-['Pacifico']">
+                    Inspired by Hue
+                </h1>
+                <p className="text-center text-gray-300 mt-2">
+                    Ink Tracing Adventures
+                </p>
+            </header>
+
+            <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+                <AnimatePresence>
+                    {!isSubscribed ? (
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="max-w-3xl w-full space-y-8"
+                        >
+                            <motion.div variants={itemVariants} className="text-center">
+                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+                                    Unlock Your Creative Journey
+                                </h2>
+                                <p className="text-gray-300 mt-4">
+                                    Embark on a colorful adventure with &quot;Inspired by Hue&quot;!
+                                    Discover the art of ink tracing and receive a <span className="font-semibold text-sky-300">FREE</span> digital copy
+                                    of my book by joining our community.
+                                </p>
+                            </motion.div>
+
+                            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6">
+                                <div className="w-full sm:w-1/2">
+                                    <img
+                                        src="Cover.jpg"
+                                        alt="Inspired by Hue Book Cover"
+                                        className="rounded-lg shadow-lg border border-gray-700 w-full max-h-[500px] object-contain"
+                                    />
+                                </div>
+                                <div className="w-full sm:w-1/2">
+                                    <form onSubmit={handleSubscribe} className="space-y-6">
                                         <div>
-                                            <label for="name" class="text-gray-200">Name</label>
-                                            <input
+                                            <Label htmlFor="name" className="text-gray-200">Name</Label>
+                                            <Input
                                                 id="name"
                                                 type="text"
-                                                
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
                                                 placeholder="Enter your name"
-                                                class="mt-1 bg-black/20 text-white border-sky-500/30 placeholder:text-gray-400 w-full rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                                                className="mt-1 bg-black/20 text-white border-sky-500/30 placeholder:text-gray-400"
                                                 required
                                             />
                                         </div>
                                         <div>
-                                            <label for="email" class="text-gray-200">Email</label>
-                                            <input
+                                            <Label htmlFor="email" className="text-gray-200">Email</Label>
+                                            <Input
                                                 id="email"
                                                 type="email"
-                                                
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
                                                 placeholder="Enter your email"
-                                                class="mt-1 bg-black/20 text-white border-sky-500/30 placeholder:text-gray-400 w-full rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                                                className="mt-1 bg-black/20 text-white border-sky-500/30 placeholder:text-gray-400"
                                                 required
-                                                
+                                                ref={emailInputRef}
                                             />
                                         </div>
-                                        <button
+                                        <Button
                                             type="submit"
-                                            class="w-full bg-gradient-to-r from-sky-500 to-blue-500 text-white py-3 rounded-md
-                                                hover:from-sky-600 hover:to-blue-600 transition-colors duration-300
-                                                shadow-lg hover:shadow-xl text-lg font-semibold
-                                                disabled:opacity-50 disabled:cursor-not-allowed"
-                                            
+                                            className={cn(
+                                                "w-full bg-gradient-to-r from-sky-500 to-blue-500 text-white py-3",
+                                                "hover:from-sky-600 hover:to-blue-600 transition-colors duration-300",
+                                                "shadow-lg hover:shadow-xl",
+                                                "disabled:opacity-50 disabled:cursor-not-allowed",
+                                                "text-lg font-semibold"
+                                            )}
+                                            disabled={isLoading}
                                         >
-                                            
-                                                <svg class="h-5 w-5 mr-3 inline-block" viewBox="0 0 24 24">
-                                                    <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4v-6h4v-4H4V6h16v2h-4v4h4v6z"/>
-                                                </svg>
-                                            
-                                            Get Your Free Copy!
-                                        </button>
+                                            {isLoading ? (
+                                                <>
+                                                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                    </svg>
+                                                    Downloading Your Copy...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Mail className="mr-2 w-5 h-5" />
+                                                    Get Your Free Copy!
+                                                </>
+                                            )}
+                                        </Button>
                                     </form>
+                                </div>
+                            </motion.div>
+
+                            <motion.div variants={itemVariants} className="text-center">
+                                <h3 className="text-lg sm:text-xl font-semibold text-gray-200">What&apos;s Inside?</h3>
+                                <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
+                                    <li>Beautiful ink tracing illustrations</li>
+                                    <li>Inspiration for your own art</li>
+                                    <li>Relaxation and stress relief</li>
+                                    <li>Improved mental focus and concentration</li>
+                                </ul>
+                            </motion.div>
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+                            className="text-center p-8 bg-black/50 rounded-xl shadow-lg border border-gray-700 max-w-2xl w-full"
+                        >
+                            <CheckCircle className="w-16 h-16 mx-auto text-green-400 mb-4" />
+                            <h2 className="text-2xl sm:text-3xl font-semibold text-green-300 mb-4">
+                                Success!
+                            </h2>
+                            <p className="text-gray-300 mb-6">
+                                Thank you for subscribing! Your free digital copy of &quot;Inspired by Hue&quot; is on its way to your inbox.
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                                <div className="flex flex-col items-center">
+                                    <BookOpen className="w-6 h-6 text-blue-400 mb-2" />
+                                    <span className="text-sm text-gray-400">Explore the Book</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Brush className="w-6 h-6 text-sky-400 mb-2" />
+                                    <span className="text-sm text-gray-400">Start Tracing</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Palette className="w-6 h-6 text-pink-400 mb-2" />
+                                    <span className="text-sm text-gray-400">Get Creative</span>
+                                </div>
                             </div>
-                        </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </main>
 
-                        <div class="text-center">
-                            <h3 class="text-lg sm:text-xl font-semibold text-gray-200">What&apos;s Inside?</h3>
-                            <ul class="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                                <li>Beautiful ink tracing illustrations</li>
-                                <li>Inspiration for your own art</li>
-                                <li>Relaxation and stress relief</li>
-                                <li>Improved mental focus and concentration</li>
-                            </ul>
-                        </div>
-                    
-                
-            
-        
-    </main>
+            <footer className="py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+                <p>&copy; {new Date().getFullYear()} Inspired by Hue. All rights reserved.</p>
+                <p className="mt-1 text-xs">
+                    <a href="/privacy" className="hover:text-sky-300 transition-colors underline">Privacy Policy</a>
+                    {" | "}
+                    <a href="/terms" className="hover:text-sky-300 transition-colors underline">Terms of Service</a>
+                </p>
+            </footer>
+        </div>
+    );
+};
 
-    <footer class="py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-        <p>&copy; 2024 Inspired by Hue. All rights reserved.</p>
-        <p class="mt-1 text-xs">
-            <a href="/privacy" class="hover:text-sky-300 transition-colors underline">Privacy Policy</a>
-            {" | "}
-            <a href="/terms" class="hover:text-sky-300 transition-colors underline">Terms of Service</a>
-        </p>
-    </footer>
-</body>
-</html>
+export default LandingPage;
+
