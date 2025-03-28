@@ -13,10 +13,13 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background-image: linear-gradient(to bottom, #1f2937, #4c1d95, #000000); /* Gray 900, Purple 900, Black */
-            color: white;
+            background-color: #FFEE8C;
+            color: #000;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
         header {
             padding: 2rem 0;
@@ -25,17 +28,13 @@
         header h1 {
             font-family: 'Pacifico', cursive;
             font-size: 3rem;
-            background-image: linear-gradient(to right, #6ee7b7, #3b82f6); /* Teal 300, Blue 500 */
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
         }
         header p {
-            color: #d1d5db; /* Gray 300 */
+            color: #4a5568;
             margin-top: 0;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         main {
             flex: 1;
@@ -45,7 +44,7 @@
             padding: 0 1rem;
         }
         .main-content {
-            max-width: 80rem; /* Increased max-width for larger screens */
+            max-width: 80%;
             width: 100%;
             space-y: 2rem;
         }
@@ -53,21 +52,21 @@
             text-align: center;
         }
         .main-content h2 {
-            font-size: 2rem;  /* Increased font-size */
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
+            color: #2d3748;
         }
         .main-content p {
-            color: #d1d5db; /* Gray 300 */
-            font-size: 1.2rem; /* Increased font-size */
+            color: #4a5568;
+            font-size: 1.2rem;
             line-height: 1.7;
             margin-bottom: 2rem;
         }
-        .free-copy{
+        .free-copy {
             font-weight: 600;
-            color: #86efac; /* Teal 300 */
+            color: #2d3748;
         }
-
         .flex-container {
             display: flex;
             flex-direction: column;
@@ -80,23 +79,21 @@
                 justify-content: center;
             }
         }
-
         .book-cover-container {
             width: 100%;
-            max-width: 400px; /* Increased max-width */
+            max-width: 400px;
         }
         .book-cover {
             width: 100%;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            border: 1px solid #4a5568; /* Gray 700 */
-            max-height: 500px; /* Added max-height */
+            border: 1px solid #4a5568;
+            max-height: 500px;
             object-fit: contain;
         }
-
         .form-container {
             width: 100%;
-            max-width: 400px; /* Increased max-width */
+            max-width: 400px;
         }
         form {
             display: flex;
@@ -108,31 +105,31 @@
             flex-direction: column;
         }
         .form-group label {
-            color: #e5e7eb; /* Gray 200 */
+            color: #4a5568;
             margin-bottom: 0.5rem;
             font-size: 1rem;
         }
         .form-group input {
             padding: 0.75rem;
             border-radius: 0.375rem;
-            border: 1px solid #6b7280; /* Gray 500 */
-            background-color: rgba(0, 0, 0, 0.2);
-            color: white;
+            border: 1px solid #6b7280;
+            background-color: rgba(255, 248, 140, 0.8);
+            color: #000;
             font-size: 1rem;
             outline: none;
             transition: border-color 0.2s ease;
         }
         .form-group input:focus {
-            border-color: #38bdf8; /* Sky 500 */
+            border-color: #38bdf8;
             box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
         }
         button[type="submit"] {
             width: 100%;
             padding: 0.8rem;
             border-radius: 0.375rem;
-            background-image: linear-gradient(to right, #38bdf8, #3b82f6); /* Sky 500, Blue 500 */
+            background-image: linear-gradient(to right, #4a5568, #2d3748);
             color: white;
-            font-size: 1.2rem; /* Increased font-size */
+            font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
@@ -140,7 +137,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
         button[type="submit"]:hover {
-            background-image: linear-gradient(to right, #22c55e, #2563eb); /* Green 500, Blue 700 on hover*/
+            background-image: linear-gradient(to right, #718096, #4a5568);
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 6px 8px -2px rgba(0, 0, 0, 0.3), 0 3px 7px -3px rgba(0, 0, 0, 0.2);
         }
@@ -149,9 +146,8 @@
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
-            background-image: linear-gradient(to right, #38bdf8, #3b82f6); /* Keep original gradient when disabled */
+            background-image: linear-gradient(to right, #4a5568, #2d3748);
         }
-
         .loading-icon {
             animation: spin 1s linear infinite;
             width: 1.2rem;
@@ -165,66 +161,6 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
-        #subscription-success {
-            text-align: center;
-            padding: 2rem;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            max-width: 80%;
-            margin: 0 auto;
-            border: 1px solid #4a5568;
-        }
-        #subscription-success svg {
-            width: 4rem;
-            height: 4rem;
-            color: #48bb78; /* Green 400 */
-            margin-bottom: 1rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        #subscription-success h2 {
-            font-size: 2.25rem;
-            font-weight: 600;
-            color: #a7f3d0; /* Teal 200 */
-            margin-bottom: 1rem;
-        }
-        #subscription-success p {
-            color: #d1d5db;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-        #subscription-success .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        @media (min-width: 640px) {
-            #subscription-success .grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        #subscription-success .grid div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #subscription-success .grid div svg {
-            width: 2rem;
-            height: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        #subscription-success .grid div span {
-            color: #d1d5db;
-            font-size: 0.875rem;
-        }
-        #subscription-success .grid div:nth-child(1) svg { color: #3b82f6; /* Blue 500 */ }
-        #subscription-success .grid div:nth-child(2) svg { color: #6ee7b7; /* Teal 300 */ }
-        #subscription-success .grid div:nth-child(3) svg { color: #f43f5e; /* Rose 500 */ }
-
-
         .what-inside {
             text-align: center;
             margin-top: 2rem;
@@ -232,7 +168,7 @@
         .what-inside h3 {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #e5e7eb; /* Gray 200 */
+            color: #2d3748;
             margin-bottom: 1rem;
         }
         .what-inside ul {
@@ -240,17 +176,15 @@
             margin: 0 auto;
             padding-left: 2rem;
             max-width: 60%;
-            color: #d1d5db; /* Gray 300 */
+            color: #4a5568;
             font-size: 1.1rem;
             line-height: 1.7;
             text-align: left;
         }
-
-
         footer {
             padding: 1rem 0;
             text-align: center;
-            color: #9ca3af; /* Gray 400 */
+            color: #4a5568;
             font-size: 0.9rem;
             margin-top: 2rem;
         }
@@ -258,92 +192,88 @@
             margin-bottom: 0.5rem;
         }
         footer a {
-            color: #bae6fd; /* Sky 200 */
+            color: #2d3748;
             text-decoration: underline;
             transition: color 0.2s ease;
         }
         footer a:hover {
-            color: #67e8f9; /* Cyan 100 */
+            color: #1a202c;
         }
-
         @media (max-width: 768px) {
-            header h1{
-                font-size: 2.5rem
+            header h1 {
+                font-size: 2.5rem;
             }
-            .main-content h2{
+            .main-content h2 {
                 font-size: 1.75rem;
             }
-            .main-content p{
+            .main-content p {
                 font-size: 1rem;
             }
-            .what-inside ul{
+            .what-inside ul {
                 font-size: 1rem;
             }
-        }
-        @media (max-width: 640px){
-            .flex-container{
+            .flex-container {
                 flex-direction: column;
             }
-            .book-cover-container{
+            .book-cover-container {
                 max-width: 90%;
             }
-            .form-container{
+            .form-container {
                 max-width: 90%;
-            }
-            #subscription-success .grid{
-                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-<body>
+<body class="bg-yellow-100 text-gray-900 font-sans antialiased">
     <header>
-        <h1>Inspired by Hue</h1>
-        <p>Ink Tracing Adventures</p>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center  font-['Pacifico']">Inspired by Hue</h1>
+        <p class="text-gray-600 mt-2 text-lg">Ink Tracing Adventures</p>
     </header>
 
-    <main>
+    <main class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div class="main-content">
             
                 
                     <div class="text-center">
-                        <h2>Unlock Your Creative Journey</h2>
-                        <p>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold">Unlock Your Creative Journey</h2>
+                        <p class="text-gray-600 mt-4">
                             Embark on a colorful adventure with &quot;Inspired by Hue&quot;!
-                            Discover the art of ink tracing and receive a <span class="free-copy">FREE</span> digital copy
+                            Discover the art of ink tracing and receive a <span class="free-copy font-semibold">FREE</span> digital copy
                             of my book by joining our community.
                         </p>
                     </div>
 
-                    <div class="flex-container">
+                    <div class="flex-container ">
                         <div class="book-cover-container">
                             <img
                                 src="Cover.jpg"
                                 alt="Inspired by Hue Book Cover"
-                                class="book-cover"
+                                class="book-cover "
                             />
                         </div>
                         <div class="form-container">
-                            <form id="subscription-form" class="space-y-6">
+                            <form  class="space-y-6">
                                 <div>
-                                    <label for="name" class="text-gray-200">Name</label>
+                                    <label for="name" class="text-gray-700 block text-sm font-bold mb-2">Name</label>
                                     <input
                                         id="name"
                                         type="text"
                                         placeholder="Enter your name"
                                         required
+                                        class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300 focus:border-blue-500 rounded-md"
                                     />
                                 </div>
                                 <div>
-                                    <label for="email" class="text-gray-200">Email</label>
+                                    <label for="email" class="text-gray-700 block text-sm font-bold mb-2">Email</label>
                                     <input
                                         id="email"
                                         type="email"
                                         placeholder="Enter your email"
                                         required
+                                        class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300 focus:border-blue-500 rounded-md"
                                     />
                                 </div>
-                                <button type="submit">
+                                <button type="submit" class="bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-md focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
                                     
                                     Get Your Free Copy!
                                 </button>
@@ -352,8 +282,8 @@
                     </div>
 
                     <div class="what-inside">
-                        <h3>What&apos;s Inside?</h3>
-                        <ul>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">What&apos;s Inside?</h3>
+                        <ul class="list-disc list-inside text-gray-700">
                             <li>Beautiful ink tracing illustrations</li>
                             <li>Inspiration for your own art</li>
                             <li>Relaxation and stress relief</li>
@@ -365,10 +295,12 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Inspired by Hue. All rights reserved.</p>
-        <p>
-            <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a>
+    <footer class="py-4 px-4 sm:px-6 lg:px-8 text-center  text-gray-600">
+        <p>&copy; 2025 Inspired by Hue. All rights reserved.</p>
+        <p class="mt-1 text-sm">
+            <a href="/privacy" class="text-blue-600 hover:text-blue-800 transition-colors underline">Privacy Policy</a>
+            {" | "}
+            <a href="/terms" class="text-blue-600 hover:text-blue-800 transition-colors underline">Terms of Service</a>
         </p>
     </footer>
 
@@ -397,38 +329,8 @@
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 console.log('Subscribed:', { name, email });
 
-                const mainContent = document.querySelector('.main-content');
-                mainContent.innerHTML = `
-                    <div id="subscription-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <h2>Success!</h2>
-                        <p>
-                            Thank you for subscribing! Your free digital copy of &quot;Inspired by Hue&quot; is on its way to your inbox.
-                        </p>
-                        <div class="grid">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042a8.967 8.967 0 00-6.363-2.918m12.726 0a8.967 8.967 0 01-6.363-2.918m0 0V8.25m0 0a8.969 8.969 0 01-3.631 5.181m0 0v-2.162m0 0a8.969 8.969 0 013.631 5.181" />
-                                </svg>
-                                <span>Explore Book</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-                                </svg>
-                                <span>Start Tracing</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                                </svg>
-                                <span>Get Creative</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                window.location.href = 'download.html';
+
             } catch (error) {
                 console.error('Subscription failed:', error);
                 alert('Failed to subscribe. Please try again later.');
