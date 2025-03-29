@@ -100,10 +100,6 @@
             flex-direction: column;
             gap: 1.5rem;
         }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
         .form-group label {
             color: #4a5568;
             margin-bottom: 0.5rem;
@@ -132,7 +128,7 @@
             font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
             border: none;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
@@ -252,35 +248,58 @@
                             />
                         </div>
                         <div class="form-container">
-                            <form id="subscription-form" class="space-y-6">
-                                <div>
-                                    <label for="name" class="text-gray-700 block text-sm font-bold mb-2">Name</label>
-                                    <input
-                                        id="name"
-                                        type="text"
-                                        name="name"
-                                        placeholder="Enter your name"
-                                        required
-                                        class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300 focus:border-blue-500 rounded-md"
-                                    />
+                            <div id="mlb2-24238425" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-24238425">
+                                <div class="ml-form-align-center ">
+                                    <div class="ml-form-embedWrapper embedForm">
+                                        <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                                            <div class="ml-form-embedContent" style="margin-bottom: 0px; "></div>
+                                            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1415400/forms/150213056619611968/subscribe" data-code="" method="post" target="_blank">
+                                                <div class="ml-form-formContent">
+                                                    <div class="ml-form-fieldRow ">
+                                                        <div class="ml-field-group ml-field-name">
+                                                            <label for="name">Name:</label>
+                                                            <input aria-label="name" type="text" class="form-control" data-inputmask="" name="fields[name]" placeholder="Name" autocomplete="given-name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ml-form-fieldRow ml-last-item">
+                                                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                                            <label for="email">Email:</label>
+                                                            <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ml-form-embedSubmit">
+                                                    <button type="submit" class="primary">Get Your Free Copy!</button>
+                                                    <button disabled="disabled" style="display: none;" type="button" class="loading">
+                                                        <div class="ml-form-embedSubmitLoad"></div>
+                                                        <span class="sr-only">Loading...</span>
+                                                    </button>
+                                                </div>
+                                                <input type="hidden" name="anticsrf" value="true">
+                                            </form>
+                                        </div>
+                                        <div class="ml-form-successBody row-success" style="display: none">
+                                            <div class="ml-form-successContent">
+                                                <h4>Thank you!</h4>
+                                                <p>You have successfully joined our subscriber list.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label for="email" class="text-gray-700 block text-sm font-bold mb-2">Email</label>
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        name="email"
-                                        placeholder="Enter your email"
-                                        required
-                                        class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300 focus:border-blue-500 rounded-md"
-                                    />
-                                </div>
-                                <button type="submit" class="bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-md shadow-md focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
-                                    
-                                    Get Your Free Copy!
-                                </button>
-                            </form>
-                        </div>
+                            </div>
+                            <script>
+                                function ml_webform_success_24238425() {
+                                    var $ = ml_jQuery || jQuery;
+                                    $('.ml-subscribe-form-24238425 .row-success').show();
+                                    $('.ml-subscribe-form-24238425 .row-form').hide();
+                                     window.location.href = 'download.html';
+                                }
+                            </script>
+                            <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+                            <script>
+                                fetch("https://assets.mailerlite.com/jsonp/1415400/forms/150213056619611968/takel")
+                            </script>
+                            </div>
                     </div>
 
                     <div class="what-inside">
@@ -306,40 +325,5 @@
         </p>
     </footer>
 
-    <script>
-        const subscriptionForm = document.getElementById('subscription-form');
-
-        subscriptionForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const submitButton = subscriptionForm.querySelector('button[type="submit"]');
-
-            const name = nameInput.value.trim();
-            const email = emailInput.value.trim();
-
-            if (!name || !email) {
-                alert('Please enter your name and email.');
-                return;
-            }
-
-            submitButton.disabled = true;
-            submitButton.innerHTML = `<span class="loading-icon"></span>Downloading Your Copy...`;
-
-            try {
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                console.log('Subscribed:', { name, email });
-
-                window.location.href = 'download.html';
-
-            } catch (error) {
-                console.error('Subscription failed:', error);
-                alert('Failed to subscribe. Please try again later.');
-                submitButton.disabled = false;
-                submitButton.innerHTML = `Get Your Free Copy!`;
-            }
-        });
-    </script>
 </body>
 </html>
